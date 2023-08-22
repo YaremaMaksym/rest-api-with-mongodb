@@ -21,4 +21,15 @@ public class Student {
     private ZonedDateTime registrationDate;
     private List<String> favoriteSubjects;
     private BigDecimal totalSpentInBooks;
+
+    public Student(String firstName, String lastName, Gender gender, String email, Address address, ZonedDateTime registrationDate, List<String> favoriteSubjects, BigDecimal totalSpentInBooks) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.email = email;
+        this.address = address;
+        this.registrationDate = registrationDate;
+        this.favoriteSubjects = favoriteSubjects;
+        this.totalSpentInBooks = totalSpentInBooks;
+    }
 }
