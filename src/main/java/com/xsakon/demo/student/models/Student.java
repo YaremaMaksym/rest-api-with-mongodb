@@ -2,6 +2,7 @@ package com.xsakon.demo.student.models;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
@@ -16,6 +17,7 @@ public class Student {
     private String firstName;
     private String lastName;
     private Gender gender;
+    @Indexed(unique = true)
     private String email;
     private Address address;
     private LocalDateTime registrationDate;
