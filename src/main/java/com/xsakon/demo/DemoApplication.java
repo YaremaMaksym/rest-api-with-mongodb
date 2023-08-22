@@ -1,13 +1,13 @@
-package com.xsakon.restapiwithmongodb;
+package com.xsakon.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class RestApiWithMongodbApplication {
+public class DemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(RestApiWithMongodbApplication.class, args);
+		SpringApplication.run(DemoApplication.class, args);
 	}
 
 }
