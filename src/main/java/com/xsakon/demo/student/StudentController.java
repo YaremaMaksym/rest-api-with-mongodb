@@ -1,6 +1,8 @@
 package com.xsakon.demo.student;
 
 import com.xsakon.demo.student.models.Student;
+import com.xsakon.demo.student.models.StudentRegistrationRequest;
+import com.xsakon.demo.student.models.StudentUpdateRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,5 +28,11 @@ public class StudentController {
     @PostMapping
     public void registerStudent(@RequestBody StudentRegistrationRequest request){
         studentService.registerStudent(request);
+    }
+
+    @PutMapping("{email}")
+    public void updateStudent(@RequestBody StudentUpdateRequest request,
+                              @PathVariable("email") String email) {
+        studentService.updateStudent(request, email);
     }
 }
