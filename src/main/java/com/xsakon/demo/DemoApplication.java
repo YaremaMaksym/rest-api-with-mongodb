@@ -38,22 +38,33 @@ public class DemoApplication {
 					BigDecimal.TEN
 			);
 
-			Query query = new Query();
-			query.addCriteria(Criteria.where("email").is(email));
+//			checkIfStudentWithEmailExistsUsingMongoTemplateAndQuery(studentRepository, mongoTemplate, email, student);
 
-			List<Student> students = mongoTemplate.find(query, Student.class);
-
-			if (students.size() > 1) {
-				throw new IllegalStateException("found more than one student with that email " + email);
-			}
-
-			if (students.isEmpty()) {
-				System.out.println("Inserting student " + student);
-				studentRepository.insert(student);
-			} else {
-				System.out.println(student + " already exists");
-			}
-
+			studentRepository.findStudentByEmail(email)
+					.ifPresentOrElse( s -> {
+						System.out.println(s + " already exists");
+						}, () -> {
+						System.out.println("Inserting student " + student);
+						studentRepository.insert(student);
+					});
 		};
+	}
+
+	private static void checkIfStudentWithEmailExistsUsingMongoTemplateAndQuery(StudentRepository studentRepository, MongoTemplate mongoTemplate, String email, Student student) {
+		Query query = new Query();
+		query.addCriteria(Criteria.where("email").is(email));
+
+		List<Student> students = mongoTemplate.find(query, Student.class);
+
+		if (students.size() > 1) {
+			throw new IllegalStateException("found more than one student with that email " + email);
+		}
+
+		if (students.isEmpty()) {
+			System.out.println("Inserting student " + student);
+			studentRepository.insert(student);
+		} else {
+			System.out.println(student + " already exists");
+		}
 	}
 }
