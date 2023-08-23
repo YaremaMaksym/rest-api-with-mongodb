@@ -1,7 +1,4 @@
-package com.xsakon.demo.student;
-
-import com.xsakon.demo.student.models.Address;
-import com.xsakon.demo.student.models.Gender;
+package com.xsakon.demo.student.models;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
