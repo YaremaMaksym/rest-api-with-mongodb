@@ -20,6 +20,7 @@ The project uses the following technologies:
 - Lombok (for reducing boilerplate code and enhancing Java classes)
 - MongoDB (as the database)
 - Maven (for dependency management)
+- Swagger (for API documentation)
 - Git (for version control)
 - Docker (for containerization)
 
