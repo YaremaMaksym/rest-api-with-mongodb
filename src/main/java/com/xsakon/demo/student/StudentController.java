@@ -35,4 +35,9 @@ public class StudentController {
                               @PathVariable("email") String email) {
         studentService.updateStudent(request, email);
     }
+
+    @DeleteMapping("{email}")
+    public void deleteStudent(@PathVariable("email") String email){
+        studentService.deleteStudent(email);
+    }
 }

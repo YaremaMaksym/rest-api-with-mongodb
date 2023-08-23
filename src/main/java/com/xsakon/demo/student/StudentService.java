@@ -87,4 +87,12 @@ public class StudentService {
             System.out.println("No updated fields found");
         }
     }
+
+    public void deleteStudent(String email) {
+        Student student = studentRepository.findStudentByEmail(email).orElseThrow(
+                () -> new IllegalStateException("No student with " + email + " found to update")
+        );
+
+        studentRepository.delete(student);
+    }
 }
