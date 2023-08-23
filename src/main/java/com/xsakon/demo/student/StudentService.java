@@ -6,9 +6,7 @@ import com.xsakon.demo.student.models.StudentUpdateRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Field;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -42,10 +40,9 @@ public class StudentService {
     }
 
     public void updateStudent(StudentUpdateRequest request, String email) {
-        if(studentRepository.findStudentByEmail(email).isEmpty()){
-            throw new IllegalStateException("No student with " + email + " found to update");
-        }
-        Student student = studentRepository.findStudentByEmail(email).get();
+        Student student = studentRepository.findStudentByEmail(email).orElseThrow(
+                () -> new IllegalStateException("No student with " + email + " found to update")
+        );
         boolean updated = false;
 
         if (request.firstName() != null && !request.firstName().equals(student.getFirstName())) {
