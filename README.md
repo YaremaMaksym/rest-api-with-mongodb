@@ -47,3 +47,5 @@ To run the project locally, follow these steps:
 * POST /api/v1/students - register new student.
 * PUT /api/v1/students/{email} - update fields of student.
 * DELETE /api/v1/students/{email} - delete student.
+
+visit '''http://localhost:8090/swagger-ui/index.html''' after running app for more detailed documentation
