@@ -18,4 +18,22 @@ public class StudentService {
     public Student getStudentByEmail(String email) {
         return studentRepository.findByEmailUsingQuery(email);
     }
+
+    public void registerStudent(StudentRegistrationRequest request) {
+        studentRepository.findStudentByEmail(request.email()).ifPresent((s) -> {
+            throw new IllegalStateException("student with email " + s.getEmail() + " already exists");
+        });
+
+        Student student = new Student(
+                request.firstName(),
+                request.lastName(),
+                request.gender(),
+                request.email(),
+                request.address(),
+                request.registrationDate(),
+                request.favoriteSubjects(),
+                request.totalSpentInBooks());
+
+        studentRepository.save(student);
+    }
 }

@@ -22,4 +22,9 @@ public class StudentController {
     public Student getStudentByEmail(@PathVariable("email") String email) {
         return studentService.getStudentByEmail(email);
     }
+
+    @PostMapping
+    public void registerStudent(@RequestBody StudentRegistrationRequest request){
+        studentService.registerStudent(request);
+    }
 }
